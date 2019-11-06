@@ -1,0 +1,19 @@
+<div>
+    <p>
+        <label>Description</label>
+        <input type="text" [formControl]="desc">
+    </p>
+    <p>
+        <label>Qty.</label>
+        <input type="number" [formControl]="qty">
+    </p>
+    <p>
+        <label>Price</label>
+        <input type="number" step="0.01" [formControl]="price">
+    </p>
+    <button type="submit" (click)="onSubmit()">Submit</button>
+
+    <p>Desc: {{desc.value}}</p>
+    <p>Qty: {{qty.value}}</p>
+    <p>Price: {{price.value}}</p>
+</div>
