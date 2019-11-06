@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-invoice-item-input',
@@ -7,9 +7,12 @@ import { FormControl } from "@angular/forms";
   styleUrls: ['./invoice-item-input.component.css']
 })
 export class InvoiceItemInputComponent implements OnInit {
-  desc = new FormControl();
-  qty = new FormControl();
-  price = new FormControl();
+  fg = new FormGroup({
+    desc : new FormControl('', Validators.required),
+    qty : new FormControl(1),
+    price : new FormControl(0)
+  });
+  
 
   constructor() { }
 
@@ -17,6 +20,7 @@ export class InvoiceItemInputComponent implements OnInit {
   }
 
   private onSubmit(): void {
-    console.log(this.desc.value);
+    console.log(this.fg.value);
+    this.fg.reset({desc: '', qty: 1, price: 0});
   }
 }
